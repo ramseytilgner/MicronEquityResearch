@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perplexity Signal — Micron NLP Stock Pitch</title>
+  <meta name="description" content="NLP-based earnings call analysis applied to Micron Technology. A quantitative case study.">
+
+  <!-- Fonts -->
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="topnav">
+    <div class="topnav__logo">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M7 17V10M12 17V7M17 17V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      Perplexity Signal
+    </div>
+    <div class="topnav__actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ===================== 1. HERO ===================== -->
+    <section class="hero container" id="hero">
+      <div class="hero__grid-bg"></div>
+      <div class="hero__label">Case Study — Quantitative NLP</div>
+      <h1 class="hero__title">Can Earnings Call Language Predict Stock Returns?</h1>
+      <p class="hero__subtitle">A perplexity-based NLP signal backtested across 3,400 earnings events, then applied to Micron Technology's historic AI-driven cycle.</p>
+      <div class="hero__meta">
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Universe</span>
+          <span class="hero__meta-value">200 tickers</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Events</span>
+          <span class="hero__meta-value">3,400</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Signal Sharpe</span>
+          <span class="hero__meta-value">2.35</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Applied to</span>
+          <span class="hero__meta-value">MU — Micron</span>
+        </div>
+        <div class="hero__meta-item">
+          <span class="hero__meta-label">Date</span>
+          <span class="hero__meta-value">April 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2. PROBLEM ===================== -->
+    <section class="section container container--default" id="problem">
+      <div class="section-header fade-in">
+        <div class="section-number">01 — The Question</div>
+        <h2 class="section-title">What if how a CEO speaks matters more than what they report?</h2>
+      </div>
+      <div class="prose fade-in">
+        <p>Earnings calls contain two layers of information. The first is financial — revenue, margins, guidance. Markets digest these in milliseconds. The second is linguistic — the hedge words, the confidence level, the structural complexity of how management frames uncertainty. This layer is slower, subtler, and largely unpriced.</p>
+        <p><strong>Perplexity</strong> — a language model's measure of surprise at a given text — captures this second layer. High perplexity indicates evasive, uncertain, or linguistically complex communication. Low perplexity signals clarity and confidence. The hypothesis: perplexity inversely predicts post-earnings returns.</p>
+      </div>
+      <div class="callout fade-in">
+        <div class="callout__label">Core thesis</div>
+        <div class="callout__text">"When management speaks clearly, the stock goes up. When they hedge, it goes down. The signal is small but persistent — and it survives controls for earnings surprise, sentiment, and market conditions."</div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. METHODOLOGY ===================== -->
+    <section class="section container" id="methodology">
+      <div class="section-header fade-in">
+        <div class="section-number">02 — Methodology</div>
+        <h2 class="section-title">Building the signal</h2>
+        <p class="section-lead">Simulated dataset with an embedded weak signal (~-5 bps/σ), designed to test whether standard quant techniques can detect and exploit linguistic patterns in earnings call text.</p>
+      </div>
+
+      <div class="card-grid card-grid--3 fade-in">
+        <div class="card">
+          <div class="card__icon card__icon--blue">01</div>
+          <div class="card__title">Feature Extraction</div>
+          <div class="card__body">
+            <p>Four NLP features computed per transcript: <strong>Perplexity</strong> (language model surprise), <strong>Sentiment</strong> (Loughran-McDonald), <strong>Readability</strong> (Fog Index proxy), and <strong>Uncertainty keywords</strong> (hedging word density).</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__icon card__icon--green">02</div>
+          <div class="card__title">Portfolio Construction</div>
+          <div class="card__body">
+            <p>Each quarter, rank stocks by perplexity z-score into quintiles. Go <strong>long Q1</strong> (low perplexity = clear communication) and <strong>short Q5</strong> (high perplexity = evasive language). Measure returns at 1, 5, and 30-day horizons.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__icon card__icon--purple">03</div>
+          <div class="card__title">Robustness Suite</div>
+          <div class="card__body">
+            <p>Test across horizons, vol regimes, market cap buckets. Run kitchen-sink regressions with controls for earnings surprise, revenue growth, and market beta. Newey-West standard errors for autocorrelation. VIF diagnostics for collinearity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. KEY CHARTS ===================== -->
+    <section class="section container" id="charts">
+      <div class="section-header fade-in">
+        <div class="section-number">03 — Results</div>
+        <h2 class="section-title">The signal works</h2>
+        <p class="section-lead">Across 20 quarters, the long/short perplexity spread compounds to +66.7% with a Sharpe of 4.72 and a 100% quarterly win rate.</p>
+      </div>
+
+      <!-- KPI row -->
+      <div class="kpi-row fade-in">
+        <div class="kpi">
+          <span class="kpi__label">L/S Spread</span>
+          <span class="kpi__value kpi__value--green">+66.7%</span>
+          <span class="kpi__detail">Cumulative, 5D horizon</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Sharpe Ratio</span>
+          <span class="kpi__value kpi__value--blue">2.35</span>
+          <span class="kpi__detail">Annualized, 5D</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Win Rate</span>
+          <span class="kpi__value kpi__value--green">90%</span>
+          <span class="kpi__detail">Quarterly, all horizons</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Perplexity t-stat</span>
+          <span class="kpi__value">-6.46</span>
+          <span class="kpi__detail">Kitchen-sink model, 5D</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Marginal R²</span>
+          <span class="kpi__value kpi__value--gold">4.10%</span>
+          <span class="kpi__detail">Perplexity alone, 5D</span>
+        </div>
+      </div>
+
+      <!-- Chart 1: Cumulative Returns -->
+      <figure class="chart-figure fade-in">
+        <img src="./assets/chart1.png" alt="Cumulative return curves for long low-perplexity, short high-perplexity, and the L/S spread from Q2 2021 to Q4 2025" class="chart-figure__img" loading="lazy">
+        <figcaption class="chart-figure__caption">
+          <div>
+            <div class="chart-figure__title">Cumulative Returns: Long Q1 vs Short Q5</div>
+            <div class="chart-figure__desc">The long leg (low perplexity) compounds to +32.8%. The short leg (high perplexity) declines -33.9%. The spread widens monotonically across all 20 quarters.</div>
+          </div>
+          <span class="chart-figure__tag">5-Day Horizon</span>
+        </figcaption>
+      </figure>
+
+      <!-- Chart 2: Quintile Distributions -->
+      <figure class="chart-figure fade-in">
+        <img src="./assets/chart2.png" alt="Violin plots showing return distributions across perplexity quintiles at 1, 5, and 30-day horizons" class="chart-figure__img" loading="lazy">
+        <figcaption class="chart-figure__caption">
+          <div>
+            <div class="chart-figure__title">Return Distribution by Perplexity Quintile</div>
+            <div class="chart-figure__desc">The Q1-Q5 spread widens at longer horizons: +2.20% at 1D, +3.34% at 5D, +4.12% at 30D. Distribution shapes show Q1 has a heavier right tail and Q5 has a heavier left tail.</div>
+          </div>
+          <span class="chart-figure__tag">All Horizons</span>
+        </figcaption>
+      </figure>
+
+      <!-- Chart 3: Scatter -->
+      <figure class="chart-figure fade-in">
+        <img src="./assets/chart3.png" alt="Scatter plot of perplexity z-score vs 5-day return with OLS regression line showing negative slope" class="chart-figure__img" loading="lazy">
+        <figcaption class="chart-figure__caption">
+          <div>
+            <div class="chart-figure__title">Perplexity Score vs. 5-Day Post-Earnings Return</div>
+            <div class="chart-figure__desc">OLS slope β = -1.19 bps/σ. Pearson ρ = -0.20 (p &lt; 0.001). The negative relationship is visible across all quintiles, with the regression line cleanly bisecting the cloud.</div>
+          </div>
+          <span class="chart-figure__tag">R² = 0.041</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ===================== 5. ROBUSTNESS ===================== -->
+    <section class="section container container--default" id="robustness">
+      <div class="section-header fade-in">
+        <div class="section-number">04 — Robustness</div>
+        <h2 class="section-title">Where it holds, and where it breaks</h2>
+      </div>
+
+      <div class="prose fade-in">
+        <p>The signal survives all horizons, sub-periods, and kitchen-sink regressions with t-statistics above 2.78 everywhere. But it has one important limitation.</p>
+      </div>
+
+      <div class="data-table-wrapper fade-in">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Test</th>
+              <th>Condition</th>
+              <th>5D Result</th>
+              <th>30D Result</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">Horizons</td>
+              <td>1D / 5D / 30D</td>
+              <td class="green">p &lt; 0.001</td>
+              <td class="green">p &lt; 0.001</td>
+              <td><span class="badge badge--green">Pass</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">High Vol Regime</td>
+              <td>VIX > median</td>
+              <td class="green">p &lt; 0.001</td>
+              <td class="green">Stronger</td>
+              <td><span class="badge badge--green">Pass</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">Low Vol Regime</td>
+              <td>VIX ≤ median</td>
+              <td class="green">p &lt; 0.001</td>
+              <td class="green">p &lt; 0.01</td>
+              <td><span class="badge badge--green">Pass</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">Small Cap</td>
+              <td>Below median</td>
+              <td class="green">p &lt; 0.001</td>
+              <td class="green">p &lt; 0.001</td>
+              <td><span class="badge badge--green">Pass</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">Large Cap</td>
+              <td>Above median</td>
+              <td class="green">p &lt; 0.01</td>
+              <td class="red">p = 0.59</td>
+              <td><span class="badge badge--red">Breaks at 30D</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">Kitchen-Sink Reg</td>
+              <td>All controls</td>
+              <td class="green">t = -6.46</td>
+              <td class="green">t = -3.12</td>
+              <td><span class="badge badge--green">Survives</span></td>
+            </tr>
+            <tr>
+              <td class="highlight">VIF Diagnostics</td>
+              <td>Max collinearity</td>
+              <td colspan="2">All features &lt; 1.35</td>
+              <td><span class="badge badge--green">Clean</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout fade-in">
+        <div class="callout__label">Key finding</div>
+        <div class="callout__text">"The signal breaks in large caps at the 30-day horizon. Efficient price discovery in mega-cap names absorbs the linguistic information before the monthly window closes."</div>
+      </div>
+
+      <div class="card-grid card-grid--2 fade-in" style="margin-top: var(--space-8);">
+        <div class="card">
+          <div class="card__icon card__icon--gold">R²</div>
+          <div class="card__title">Feature Contribution Ranking</div>
+          <div class="card__body">
+            <p><strong>Perplexity</strong> dominates at 4.10% marginal R², followed by <strong>Sentiment</strong> at 1.85%. Readability and uncertainty keywords contribute -3 and -4 bps/σ respectively but are ~55% redundant with perplexity.</p>
+            <p>Sentiment adds orthogonal information — the only feature that is genuinely independent.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__icon card__icon--blue">NW</div>
+          <div class="card__title">Newey-West Adjustment</div>
+          <div class="card__body">
+            <p>Newey-West standard errors confirm low autocorrelation in the signal. The t-statistics barely change after adjustment, indicating the returns are not serially correlated — each earnings event is largely independent.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 6. MICRON ===================== -->
+    <section class="section container" id="micron">
+      <div class="section-header fade-in">
+        <div class="section-number">05 — Applied: Micron Technology</div>
+        <h2 class="section-title">Reading Mehrotra's linguistic arc</h2>
+        <p class="section-lead">Mapping CEO Sanjay Mehrotra's language evolution from the FQ3'23 trough to the FQ2'26 record — and what the perplexity framework reveals about the current thesis.</p>
+      </div>
+
+      <!-- MU KPIs -->
+      <div class="kpi-row fade-in">
+        <div class="kpi">
+          <span class="kpi__label">MU Price</span>
+          <span class="kpi__value">$321</span>
+          <span class="kpi__detail">March 30, 2026</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Fwd P/E</span>
+          <span class="kpi__value kpi__value--gold">4.6x</span>
+          <span class="kpi__detail">FY2026E</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">FQ2 Revenue</span>
+          <span class="kpi__value kpi__value--green">$23.9B</span>
+          <span class="kpi__detail">+196% YoY</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Gross Margin</span>
+          <span class="kpi__value kpi__value--green">74.4%</span>
+          <span class="kpi__detail">Record, guiding 81%</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi__label">Post-Earnings</span>
+          <span class="kpi__value kpi__value--red">-30%</span>
+          <span class="kpi__detail">Despite 32-39% beat</span>
+        </div>
+      </div>
+
+      <!-- Linguistic Arc Timeline -->
+      <div class="timeline fade-in">
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--red"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-content__header">
+              <span class="timeline-content__title">Trough Language</span>
+              <span class="timeline-content__range">FQ3'23 — FQ4'23 · $3.8B rev · -17.8% GM</span>
+            </div>
+            <div class="timeline-content__body">
+              <p>High uncertainty density. "Downturn," "extremely challenged," "well into calendar 2024." Conditional optimism: "increased confidence that the industry has passed the bottom." Defensive survival language. <strong>Predicted perplexity: Q5 (highest).</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--gold"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-content__header">
+              <span class="timeline-content__title">Recovery Inflection</span>
+              <span class="timeline-content__range">FQ1'24 — FQ2'24 · $5.8B rev · 14.1% GM</span>
+            </div>
+            <div class="timeline-content__body">
+              <p>Shift from conditional to declarative. "Early innings of a multiyear growth phase" replaces "navigating the downturn." AI narrative emerges. "Robust price increases" replaces "pricing trends are improving." <strong>Predicted perplexity: declining (Q4→Q3).</strong> This is where the signal was most actionable.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--green"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-content__header">
+              <span class="timeline-content__title">Acceleration</span>
+              <span class="timeline-content__range">FQ3'24 — FQ4'25 · $11.7B rev · 42.2% GM</span>
+            </div>
+            <div class="timeline-content__body">
+              <p>Formulaic superlatives: "record revenue," "strong execution," "exceeded the high end." Decreasing vocabulary diversity as narrative narrows to pricing power, supply tightness, AI demand. <strong>Predicted perplexity: Q1-Q2 (low, stable).</strong> Strongest forward return signal.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--blue"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-content__header">
+              <span class="timeline-content__title">Peak Confidence + Divergence</span>
+              <span class="timeline-content__range">FQ2'26 · $23.9B rev · 74.4% GM</span>
+            </div>
+            <div class="timeline-content__body">
+              <p><strong>Surface:</strong> "Exceptional results," "strategic asset," 30% dividend hike, first-ever 5-year customer agreement. Maximally confident prepared remarks.</p>
+              <p><strong>Subsurface:</strong> CFO refused FQ4 gross margin guidance. CapEx raised to &gt;$25B with no ceiling. Avoided long-term bit growth specifics. Admitted diminishing marginal pricing impact at 81% margins. <strong>Predicted: Q1 prepared remarks, Q3 in Q&amp;A.</strong> The divergence is the signal.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Divergence Explanation -->
+      <div class="card-grid card-grid--2 fade-in">
+        <div class="card">
+          <div class="card__icon card__icon--green">↑</div>
+          <div class="card__title">Bull Case Strengthened</div>
+          <div class="card__body">
+            <p>Low perplexity sustained 6+ quarters — compounding positive signal. Structural vocabulary is internally consistent across 4 consecutive calls. Five-year SCA and 30% dividend hike confirm confidence with capital, not just words.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__icon card__icon--red">↓</div>
+          <div class="card__title">Risk Signals Detected</div>
+          <div class="card__body">
+            <p>Prepared-vs-Q&A perplexity divergence is a yellow flag. CapEx language escalating without bounds. At $362B market cap, MU is in the large-cap cohort where the 30D signal loses significance (p = 0.59). Paragon Intel flags Mehrotra's "weak cyclical forecasting" history.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spike Triggers Table -->
+      <h3 style="font-family: var(--font-body); font-weight: 600; font-size: var(--text-lg); margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text);" class="fade-in">When would perplexity spike?</h3>
+
+      <div class="data-table-wrapper data-table-wrapper--wide fade-in">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Trigger</th>
+              <th>Probability</th>
+              <th>Linguistic Signature</th>
+              <th>Return Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="highlight">CapEx Overshoot</td>
+              <td><span class="badge badge--gold">50-60%</span></td>
+              <td>"Investing for long-term value" replaces "disciplined investment"</td>
+              <td class="red">Already pricing — 30% post-ER drop</td>
+            </tr>
+            <tr>
+              <td class="highlight">Cycle Peak Admission</td>
+              <td><span class="badge badge--gold">35-45%</span></td>
+              <td>"Structural" → "normalizing" vocabulary shift</td>
+              <td class="red">15-25% drawdown</td>
+            </tr>
+            <tr>
+              <td class="highlight">HBM Share Loss</td>
+              <td><span class="badge badge--muted">20-30%</span></td>
+              <td>"Competitive dynamics" where "leadership" existed</td>
+              <td class="red">15-20% revenue/margin hit</td>
+            </tr>
+            <tr>
+              <td class="highlight">AI Efficiency Shock</td>
+              <td><span class="badge badge--muted">15-20%</span></td>
+              <td>"Efficiency" and "optimization" enter demand narrative</td>
+              <td class="red">30-50% long-term rev cut</td>
+            </tr>
+            <tr>
+              <td class="highlight">Geopolitical Disruption</td>
+              <td><span class="badge badge--muted">5-10%</span></td>
+              <td>Supply risk moves from disclaimer to prepared remarks</td>
+              <td class="red">50-80% stock decline</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================== 7. THESIS ===================== -->
+    <section class="section container container--default" id="thesis">
+      <div class="section-header fade-in">
+        <div class="section-number">06 — Thesis + Limitations</div>
+        <h2 class="section-title">Net signal: bullish but weakening</h2>
+      </div>
+
+      <div class="prose fade-in">
+        <p>At the current linguistic profile, MU sits in Q1/Q2 — the quintile associated with the strongest forward returns. Sustained low perplexity across multiple quarters, reinforced by dividend hikes and strategic agreements, creates a compounding positive signal.</p>
+        <p>However, three factors temper the outlook: the prepared-vs-Q&A divergence suggests the next quarter's language may shift; MU's $362B market cap places it where the 30-day signal loses statistical significance; and the CapEx escalation pattern resembles the early stages of what historically precedes cycle-peak admissions.</p>
+      </div>
+
+      <!-- Probability cards -->
+      <div class="card-grid card-grid--3 fade-in" style="margin-top: var(--space-8);">
+        <div class="card" style="border-left: 3px solid var(--color-accent-green);">
+          <div class="card__title"><span class="badge badge--green" style="margin-right: var(--space-2);">60%</span>Perplexity stays low</div>
+          <div class="card__body">FQ3'26 delivers 81% GM, structural narrative holds. Supports $450-530 probability-weighted fair value from the equity memo.</div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--color-accent-gold);">
+          <div class="card__title"><span class="badge badge--gold" style="margin-right: var(--space-2);">25%</span>Perplexity spikes</div>
+          <div class="card__body">FQ4'26 or FQ1'27 margin moderation forces language regime change. Signal shifts to neutral. CapEx ceiling admission triggers repricing.</div>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--color-accent-red);">
+          <div class="card__title"><span class="badge badge--red" style="margin-right: var(--space-2);">15%</span>Exogenous shock</div>
+          <div class="card__body">TurboQuant adoption, geopolitical disruption, or HBM share loss forces abrupt perplexity spike. Signal flips bearish.</div>
+        </div>
+      </div>
+
+      <div class="callout fade-in" style="margin-top: var(--space-8);">
+        <div class="callout__label">Key monitoring variable</div>
+        <div class="callout__text">"Does Mehrotra provide FQ4 gross margin guidance on the June FQ3'26 call? If yes, the divergence closes — bullish. If he again declines, the hedging pattern strengthens and the signal weakens."</div>
+      </div>
+
+      <!-- Limitations -->
+      <h3 style="font-family: var(--font-body); font-weight: 600; font-size: var(--text-lg); margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--color-text);" class="fade-in">Limitations</h3>
+
+      <div class="card-grid card-grid--2 fade-in">
+        <div class="card">
+          <div class="card__title">Simulated data</div>
+          <div class="card__body">The backtest uses a synthetic dataset with an embedded -5 bps/σ signal. Applying it to actual transcripts requires acknowledging that individual-stock NLP signals are noisier than cross-sectional portfolio signals.</div>
+        </div>
+        <div class="card">
+          <div class="card__title">Large-cap degradation</div>
+          <div class="card__body">The signal loses significance in large caps at 30D. MU at $362B falls squarely in this cohort. The 5D horizon remains actionable, but monthly holding periods are unreliable.</div>
+        </div>
+        <div class="card">
+          <div class="card__title">N=1 application</div>
+          <div class="card__body">Analyzing a single company's linguistic arc, however detailed, does not constitute a statistical test. The framework is designed for cross-sectional portfolios, not individual stock conviction.</div>
+        </div>
+        <div class="card">
+          <div class="card__title">Proxy, not literal</div>
+          <div class="card__body">"Perplexity" is used as a linguistic complexity measure, not a literal GPT perplexity score on the transcript. A production system would require running a language model on the actual text.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 8. SOURCES ===================== -->
+    <section class="section container container--default" id="sources">
+      <div class="section-header fade-in">
+        <div class="section-number">07 — Source Documents</div>
+        <h2 class="section-title">Download the underlying research</h2>
+        <p class="section-lead">The full equity research memo and NLP methodology behind this case study, in PDF.</p>
+      </div>
+
+      <div class="card-grid card-grid--2 fade-in">
+        <div class="card">
+          <div class="card__icon card__icon--blue">PDF</div>
+          <div class="card__title">Equity Research Memo</div>
+          <div class="card__body">
+            <p>Full Micron Technology investment memorandum — thesis, valuation framework, scenario analysis, and risk assessment.</p>
+            <p style="margin-top: var(--space-4);">
+              <a href="./Micron%20Technology%20Equity%20Research%20Memo.pdf"
+                 download
+                 style="display: inline-block; padding: var(--space-3) var(--space-5); border: 1px solid var(--color-border, currentColor); border-radius: 6px; text-decoration: none; font-family: var(--font-mono, monospace); font-size: var(--text-sm); color: var(--color-text); transition: opacity .2s;">
+                Download PDF &nbsp;→
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__icon card__icon--purple">PDF</div>
+          <div class="card__title">NLP Analysis</div>
+          <div class="card__body">
+            <p>Methodology paper for the perplexity signal — feature engineering, portfolio construction, the robustness suite, and interpretation.</p>
+            <p style="margin-top: var(--space-4);">
+              <a href="./Mircon%20Technology%20NLP%20Analysis.pdf"
+                 download
+                 style="display: inline-block; padding: var(--space-3) var(--space-5); border: 1px solid var(--color-border, currentColor); border-radius: 6px; text-decoration: none; font-family: var(--font-mono, monospace); font-size: var(--text-sm); color: var(--color-text); transition: opacity .2s;">
+                Download PDF &nbsp;→
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <p class="site-footer__text">This analysis applies a simulated NLP research framework to a real company for educational and analytical purposes. Not investment advice. April 2026.</p>
+  </footer>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+    // Theme toggle
+    (function () {
+      const t = document.querySelector('[data-theme-toggle]'),
+        r = document.documentElement;
+      let d = 'dark';
+      r.setAttribute('data-theme', d);
+      t &&
+        t.addEventListener('click', () => {
+          d = d === 'dark' ? 'light' : 'dark';
+          r.setAttribute('data-theme', d);
+          t.setAttribute('aria-label', 'Switch to ' + (d === 'dark' ? 'light' : 'dark') + ' mode');
+          t.innerHTML =
+            d === 'dark'
+              ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+              : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+        });
+    })();
+  </script>
+
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
